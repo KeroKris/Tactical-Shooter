@@ -199,6 +199,13 @@ public class Player {
             t.draw();
             t.getProjectiles().forEach(Projectile::update);
 
+            for (Projectile p :
+                    t.getProjectiles()) {
+                if (!p.isAlive()){
+                    t.getProjectiles().remove(p);
+                }
+            }
+
             if (t.hasCheckPoint()) {
                 t.getMoveCheckPoints().forEach(MoveCheckPoint::update);
             }
@@ -264,5 +271,9 @@ public class Player {
                 Clock.pause();
             }
         }
+    }
+
+    public ArrayList<Tower> getTowerList() {
+        return towerList;
     }
 }

@@ -85,10 +85,18 @@ public class Game {
         waveManager.update();
         player.update();
 
+        int projectileNumber = 0;
+
+        for (Tower t :
+                player.getTowerList()) {
+            projectileNumber += t.getProjectiles().size();
+        }
+        
         gameUI.drawString(80, 4,"Wave: " + waveManager.getWaveNumber() + "        fps: " + StateManager.getFps());
         if(player.getSelectedTower() != null)
             gameUI.drawString(80, 32, "Selected Soldier: " + player.getSelectedTower().getId());
         gameUI.drawString(80, HEIGHT - 60,"Number of enemies: " + waveManager.getCurrentWave().getEnemyAmount());
+        gameUI.drawString(80, HEIGHT - 75, "Number of projectiles: " + projectileNumber);
         gameUI.drawString(80, HEIGHT - 35,"Enemies left to spawn: " + (waveManager.getCurrentWave().getEnemiesPerWave() - waveManager.getCurrentWave().getEnemiesSpawned())
                 + "/" +  waveManager.getCurrentWave().getEnemiesPerWave());
     }

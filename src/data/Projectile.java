@@ -102,4 +102,9 @@ public abstract class Projectile extends Entity {
 //		xVelocity *= accuracy;
 //		yVelocity *= accuracy;
     }
+
+    @Override
+    public boolean isAlive() {
+        return super.isAlive();
+    }
 }

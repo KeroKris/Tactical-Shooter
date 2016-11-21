@@ -18,7 +18,7 @@ abstract class Tower extends Entity {
     protected Texture baseTexture, cannonTexture;
     @SuppressWarnings("unused")
     protected Tile startTile;
-    ArrayList<Projectile> projectiles;
+    CopyOnWriteArrayList<Projectile> projectiles;
     CopyOnWriteArrayList<Enemy> enemies;
     protected Enemy target;
     boolean targeted;
@@ -52,7 +52,7 @@ abstract class Tower extends Entity {
         this.projectileSize = type.projectileSize;
 
         this.targeted = false;
-        this.setProjectiles(new ArrayList<>());
+        this.setProjectiles(new CopyOnWriteArrayList<>());
         this.enemies = enemies;
         this.target = acquireTarget();
         this.shootAngle = 0;
@@ -278,7 +278,7 @@ abstract class Tower extends Entity {
         return target;
     }
 
-    public ArrayList<Projectile> getProjectiles() {
+    public CopyOnWriteArrayList<Projectile> getProjectiles() {
         return projectiles;
     }
 
@@ -289,7 +289,7 @@ abstract class Tower extends Entity {
 
 
 
-    public void setProjectiles(ArrayList<Projectile> projectiles) {
+    public void setProjectiles(CopyOnWriteArrayList<Projectile> projectiles) {
         this.projectiles = projectiles;
     }
 
